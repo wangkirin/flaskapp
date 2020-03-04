@@ -11,11 +11,14 @@ spec:
     - name: http
       port: 80
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flaskapp-v1
 spec:
+  selector:
+    matchLabels:
+      app: flaskapp
   replicas: 1
   template:
     metadata:
@@ -36,6 +39,9 @@ kind: Deployment
 metadata:
   name: flaskapp-v2
 spec:
+  selector:
+    matchLabels:
+      app: flaskapp
   replicas: 1
   template:
     metadata:
